@@ -4,10 +4,8 @@ public class main extends Waehrungen{
 
 	public static void main(String[] args) {
 		
-		
-		
 		System.out.println(euro.toString());
-		System.out.println(dollar.umrechnen(10, "€"));
+		System.out.println(dollar.umrechnen(2, euro));
 	}
 
 }

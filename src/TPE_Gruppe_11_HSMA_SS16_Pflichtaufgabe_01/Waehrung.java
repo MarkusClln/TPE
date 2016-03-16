@@ -1,11 +1,11 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
-public class Waehrung extends Waehrungen {
-	private String name;
-	private String kuerzel;
-	private double kurs;
+final class Waehrung extends Waehrungen {
+	private final String name;
+	private final String kuerzel;
+	private final double kurs;
 
-	Waehrung(String name, String kuerzel, double kurs) {
+	public Waehrung(String name, String kuerzel, double kurs) {
 		this.name = name;
 		this.kuerzel = kuerzel;
 		this.kurs = kurs;
@@ -23,36 +23,10 @@ public class Waehrung extends Waehrungen {
 		return name;
 	}
 
-	/*
-	 * es muss long umrechnen(..) sein und long zurückgeben mit double
-	 * funktioniert die Berechnung einwandfrei, aber laut Aufgabe ist long
-	 * verlangt als Rückgabewert habs mit casten probiert, aber da wird dann nur
-	 * die Stelle vorm Komma zurückgegeben
-	 * 
-	 */
-	public long umrechnen(long betrag, String zielwaehrung) {
-		double umgerechneterBetrag = 0;
-		double dollar;
-
-		dollar = (double) betrag * kurs;
-
-		if (zielwaehrung == "€") {
-			kurs = euro.getKurs();
-			umgerechneterBetrag = dollar / kurs;
-		} else if (zielwaehrung == "Y") {
-			kurs = yen.getKurs();
-			umgerechneterBetrag = dollar / kurs;
-		} else if (zielwaehrung == "RUB") {
-			kurs = rub.getKurs();
-			umgerechneterBetrag = dollar / kurs;
-		} else if (zielwaehrung == "CHF") {
-			kurs = chf.getKurs();
-			umgerechneterBetrag = dollar / kurs;
-		} else if (zielwaehrung == "$") {
-			umgerechneterBetrag = dollar;
-		} else {
-			System.out.println("Ungütlige Währung");
-		}
+	
+	public long umrechnen(long betrag, Waehrung zielwaehrung) {
+		double umgerechneterBetrag = betrag * this.kurs;
+		umgerechneterBetrag = umgerechneterBetrag/zielwaehrung.kurs;
 		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
 		umgerechneterBetrag *= 100;
 		return (long) umgerechneterBetrag;
