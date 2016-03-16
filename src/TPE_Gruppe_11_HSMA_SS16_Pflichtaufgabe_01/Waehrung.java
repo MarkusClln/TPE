@@ -1,6 +1,6 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
-public class Waehrung {
+public class Waehrung extends Waehrungen {
 	private String name;
 	private String kuerzel;
 	private double kurs;
@@ -37,16 +37,16 @@ public class Waehrung {
 		dollar = (double) betrag * kurs;
 
 		if (zielwaehrung == "€") {
-			kurs = 1.2690;
+			kurs = euro.getKurs();
 			umgerechneterBetrag = dollar / kurs;
 		} else if (zielwaehrung == "Y") {
-			kurs = 0.0091;
+			kurs = yen.getKurs();
 			umgerechneterBetrag = dollar / kurs;
 		} else if (zielwaehrung == "RUB") {
-			kurs = 0.0255;
+			kurs = rub.getKurs();
 			umgerechneterBetrag = dollar / kurs;
 		} else if (zielwaehrung == "CHF") {
-			kurs = 1.0509;
+			kurs = chf.getKurs();
 			umgerechneterBetrag = dollar / kurs;
 		} else if (zielwaehrung == "$") {
 			umgerechneterBetrag = dollar;
