@@ -12,7 +12,7 @@ public class TESt {
 		}else if(a==2){
 			return "Sie haben keine 2 eingegeben";
 		}else{
-			return "Sie haben 1 und 2 eingegeben";
+			return "Sie haben 1 und 3 eingegeben";
 		}
 		
 		
