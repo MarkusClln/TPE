@@ -18,8 +18,5 @@ public class Betrag {
 		}
 	}
 	
-	double addiere(Betrag b){
-		double ergebnis;
-		
-	}
+	
 }
