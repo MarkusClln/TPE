@@ -8,7 +8,7 @@ public class Mmain {
 		
 		System.out.println(waehrungen.euro.toString());
 		
-		System.out.println(waehrungen.dollar.umrechnen(2, waehrungen.euro));
+		System.out.println(waehrungen.dollar.umrechnen(200, waehrungen.euro));
 	}
 
 }
