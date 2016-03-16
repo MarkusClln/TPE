@@ -1,4 +1,4 @@
-package Pflichtaufgabe_01;
+package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
 public class main {
 
