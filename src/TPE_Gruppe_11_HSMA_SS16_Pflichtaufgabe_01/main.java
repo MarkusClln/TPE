@@ -7,7 +7,7 @@ public class main extends Waehrungen{
 		
 		
 		System.out.println(euro.toString());
-		System.out.println(dollar.umrechnen(1, "€"));
+		System.out.println(dollar.umrechnen(10, "€"));
 	}
 
 }

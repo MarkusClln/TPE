@@ -30,7 +30,7 @@ public class Waehrung extends Waehrungen {
 	 * die Stelle vorm Komma zurückgegeben
 	 * 
 	 */
-	public double umrechnen(long betrag, String zielwaehrung) {
+	public long umrechnen(long betrag, String zielwaehrung) {
 		double umgerechneterBetrag = 0;
 		double dollar;
 
@@ -53,8 +53,9 @@ public class Waehrung extends Waehrungen {
 		} else {
 			System.out.println("Ungütlige Währung");
 		}
-		umgerechneterBetrag = Math.round(umgerechneterBetrag * 10000) / 10000.0;
-		return umgerechneterBetrag;
+		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
+		umgerechneterBetrag *= 100;
+		return (long) umgerechneterBetrag;
 	}
 
 	public String toString() {
