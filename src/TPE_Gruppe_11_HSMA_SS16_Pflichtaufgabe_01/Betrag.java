@@ -38,6 +38,16 @@ public class Betrag {
 		return ergebnis;
 	}
 	
+	double prozent(Betrag b, double prozentsatz){
+		double prozentwert = b.betrag * prozentsatz;
+		return prozentwert;
+	}
+	
+	double promille(Betrag b, double promillesatz){
+		double promillewert = (b.betrag * promillesatz)/100;
+		return promillewert;
+	}
+	
 	double getVorkomma(){
 		int vorKomma = (int) this.betrag; //int gibt nur alles vorm Komma aus
 		return vorKomma;
@@ -46,6 +56,10 @@ public class Betrag {
 	double getNachkomma(){
 		double nachKomma = this.betrag % 1; //der rest von betrag modulo 1 ist alles nach dem Komma
 		return nachKomma;
+	}
+	
+	public String toString(){
+		return getVorzeichen()*betrag + " " + waehrung;
 	}
 	
 	double getAsDouble(){
