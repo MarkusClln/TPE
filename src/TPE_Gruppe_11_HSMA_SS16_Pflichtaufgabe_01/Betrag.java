@@ -58,7 +58,7 @@ public class Betrag {
 	}
 	
 	double getNachkomma(){
-		double nachKomma = this.betrag % 1; //der rest von betrag modulo 1 ist alles nach dem Komma
+		double nachKomma = (this.betrag * 100) % 100; //der rest von betrag modulo 1 ist alles nach dem Komma
 		return nachKomma;
 	}
 	

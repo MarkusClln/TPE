@@ -39,7 +39,6 @@ public class BetragTest {
 	@Test
 	public void testMultipliziereDouble() {
 		Betrag b = new Betrag(2, "€");
-		
 		double erg = b.multipliziere(2.6);
 		assertTrue(erg == 5.2);
 	}
@@ -52,9 +51,9 @@ public class BetragTest {
 	}
 
 	@Test
-	public void testPromille() {  //Fehler
+	public void testPromille() { 
 		Betrag b = new Betrag(10, "€");
-		double erg = b.prozent(0.2);
+		double erg = b.promille(0.2);
 		assertTrue(erg == 0.002);
 	}
 
@@ -67,9 +66,9 @@ public class BetragTest {
 
 	@Test
 	public void testGetNachkomma() { //Fehler
-		Betrag b = new Betrag(12.32, "€");
+		Betrag b = new Betrag(12.52, "€");
 		double erg = b.getNachkomma();
-		assertTrue(erg == 32);
+		assertTrue(erg == 52);
 	}
 
 
