@@ -1,11 +1,15 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 public class Betrag {
 	
 	private final double betrag;
 	private final String waehrung;
-	
-	private Betrag(double betrag, String waehrung){
+
+	public Betrag(double betrag, String waehrung){
 		this.betrag = betrag;
 		this.waehrung = waehrung;
 	}
@@ -18,7 +22,7 @@ public class Betrag {
 		}
 	}
 	
-	double addiere(Betrag b){
+	public double addiere(Betrag b){
 		double ergebnis = this.betrag + b.betrag;
 		return ergebnis;
 	}
@@ -38,13 +42,13 @@ public class Betrag {
 		return ergebnis;
 	}
 	
-	double prozent(Betrag b, double prozentsatz){
-		double prozentwert = b.betrag * prozentsatz;
+	double prozent(double prozentsatz){
+		double prozentwert = this.betrag * prozentsatz;
 		return prozentwert;
 	}
 	
-	double promille(Betrag b, double promillesatz){
-		double promillewert = (b.betrag * promillesatz)/100;
+	double promille(double promillesatz){
+		double promillewert = (this.betrag * promillesatz)/1000;
 		return promillewert;
 	}
 	
