@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class Betrag {
 	
-	private final double betrag;
-	private final String waehrung;
+	private final long betrag;
+	private final Waehrung waehrung;
 
-	public Betrag(double betrag, String waehrung){
-		this.betrag = betrag;
+	public Betrag(double betrag, Waehrung waehrung){
+		this.betrag = (long)(betrag*100);
 		this.waehrung = waehrung;
 	}
 	
@@ -22,14 +22,12 @@ public class Betrag {
 		}
 	}
 	
-	public double addiere(Betrag b){
-		double ergebnis = this.betrag + b.betrag;
-		return ergebnis;
+	public long addiere(Betrag b){
+		return (this.betrag + b.betrag);
 	}
 	
 	double subtrahiere(Betrag b){
-		double ergebnis = this.betrag - b.betrag;
-		return ergebnis;
+		return this.betrag - b.betrag;
 	}
 	
 	double multipliziere(double zahl){
@@ -52,14 +50,13 @@ public class Betrag {
 		return promillewert;
 	}
 	
-	double getVorkomma(){
-		int vorKomma = (int) this.betrag; //int gibt nur alles vorm Komma aus
-		return vorKomma;
+	int getVorkomma(){
+		double vorKomma= this.betrag/100;//int gibt nur alles vorm Komma aus
+		return (int) vorKomma;
 	}
 	
-	double getNachkomma(){
-		double nachKomma = (this.betrag * 100) % 100; //der rest von betrag modulo 1 ist alles nach dem Komma
-		return nachKomma;
+	int getNachkomma(){
+		return (int) this.betrag%100; //der rest von betrag modulo 1 ist alles nach dem Komma	
 	}
 	
 	public String toString(){
@@ -67,9 +64,9 @@ public class Betrag {
 	}
 	
 	double getAsDouble(){
+		
 		double doubleZahl = this.betrag;
-		doubleZahl = Math.round(doubleZahl * 100)/100.0;
-		return doubleZahl;
+		return (doubleZahl/100);
 	}
 
 	@Override
