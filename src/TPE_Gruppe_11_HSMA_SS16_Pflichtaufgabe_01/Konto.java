@@ -12,8 +12,21 @@ public class Konto {
 	void buche(Betrag betrag){
 		if(this.waehrung==betrag.getWaehrung()){
 			this.guthaben+=(betrag.getAsDouble()*100);
+		}else{
+			double temp= betrag.getAsDouble();
+			temp=temp*Waehrung.dollar.getKurs();
+			temp/=this.waehrung.getKurs();
+			this.guthaben+=(temp*100);
 		}
 	}
+	public double saldo(){
+		double saldo = (double) this.guthaben;
+		return saldo/100;
+	}
+	public void gebuehren(){
+		//noch nicht Fertig
+	}
+	
 	
 	public String getInhaber(){
 		return this.inhaber;
