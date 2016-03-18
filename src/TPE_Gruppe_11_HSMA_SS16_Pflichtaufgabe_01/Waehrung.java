@@ -1,15 +1,17 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
-final class Waehrung extends Waehrungen {
+class Waehrung extends Waehrungen {
 	private final String name;
 	private final String kuerzel;
 	private final double kurs;
-
+	
 	public Waehrung(String name, String kuerzel, double kurs) {
 		this.name = name;
 		this.kuerzel = kuerzel;
 		this.kurs = kurs;
 	}
+	
+
 
 	public String getKuerzel() {
 		return kuerzel;
@@ -24,8 +26,8 @@ final class Waehrung extends Waehrungen {
 	}
 
 	
-	public long umrechnen(long betrag, Waehrung zielwaehrung) {
-		double umgerechneterBetrag = betrag * this.kurs;
+	public static long umrechnen(long betrag, Waehrung zielwaehrung) {
+		double umgerechneterBetrag = betrag * dollar.kurs;
 		umgerechneterBetrag = umgerechneterBetrag/zielwaehrung.kurs;
 		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
 		umgerechneterBetrag *= 100;

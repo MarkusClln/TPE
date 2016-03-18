@@ -4,13 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class Betrag {
+public class Betrag{
 	
 	private final long betrag;
 	private final Waehrung waehrung;
 
 	public Betrag(double betrag, Waehrung waehrung){
-		this.betrag = (long)(betrag*100);
+		
+		this.betrag = (long) (betrag*100);
 		this.waehrung = waehrung;
 	}
 	
@@ -26,6 +27,10 @@ public class Betrag {
 		return (this.betrag + b.betrag);
 	}
 	
+	public long getBetrag() {
+		return betrag;
+	}
+
 	double subtrahiere(Betrag b){
 		return this.betrag - b.betrag;
 	}
