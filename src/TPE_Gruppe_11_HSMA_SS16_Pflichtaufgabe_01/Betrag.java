@@ -88,6 +88,8 @@ public class Betrag {
 		return true;
 	}
 	
-	
+	public Waehrung getWaehrung(){
+		return this.waehrung;
+	}
 	
 }
