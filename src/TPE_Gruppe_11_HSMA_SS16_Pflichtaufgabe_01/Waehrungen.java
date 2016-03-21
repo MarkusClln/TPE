@@ -1,5 +1,15 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
+/**
+ * @author Jens Windisch (1526760)
+ * @author Markus Cöllen ()
+ * @since 15.03.2016
+ *  Die Klasse Waehrungen dient allein dazu,
+ *  sämtliche Waehrungen als konstante Objekte zu speichern,
+ *  die überall im Programm einfach wieder verwendet werden können,
+ *  ohne das eine neue Instanziierung nötig wäre
+ */
+
 public class Waehrungen {
 
 	static Waehrung euro = new Waehrung("Euro", "€", 1.2690);

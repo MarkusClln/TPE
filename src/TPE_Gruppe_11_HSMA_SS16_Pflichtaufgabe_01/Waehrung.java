@@ -27,7 +27,7 @@ class Waehrung extends Waehrungen {
 
 	
 	public static long umrechnen(long betrag, Waehrung zielwaehrung) {
-		double umgerechneterBetrag = betrag * dollar.kurs;
+		double umgerechneterBetrag = (double) betrag * dollar.kurs;
 		umgerechneterBetrag = umgerechneterBetrag/zielwaehrung.kurs;
 		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
 		umgerechneterBetrag *= 100;

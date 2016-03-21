@@ -1,20 +1,32 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
-
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+/**
+ * @author Jens Windisch (1526760)
+ * @author Markus Cöllen()
+ * 
+ */
 
 public class Betrag{
 	
 	private final long betrag;
 	private final Waehrung waehrung;
+	/**
+	 * Erstellt ein neues Objekt vom Typ Betrag
+	 * @param betrag gibt den Betrag des Objekts an
+	 * @param waehrung gibt die Währung des Objekts an
+	 */
+	Betrag(double betrag, Waehrung waehrung){
 
-	public Betrag(double betrag, Waehrung waehrung){
-		
 		this.betrag = (long) (betrag*100);
 		this.waehrung = waehrung;
 	}
 	
+	public long getBetrag() {
+		return betrag;
+	}
+	/**
+	 * Ermittelt das Vorzeichen eines Betrages
+	 * @return -1 für negatives Vorzeichen, 1 für positives Vorzeichen
+	 */
 	int getVorzeichen() {
 		if (betrag >= 0) {
 			return 1;
@@ -23,25 +35,38 @@ public class Betrag{
 		}
 	}
 	
+	/**
+	 * Addiert einen Betrag auf gegebenen Betrag
+	 * @param b Betrag der dazu addiert werden soll
+	 * @return Ausgangsbetrag + übergebener Betrag
+	 */
 	public long addiere(Betrag b){
 		return (this.betrag + b.betrag);
 	}
-	
-	public long getBetrag() {
-		return betrag;
-	}
-
+	/**
+	 * Subtrahiert einen Betrag von gegebenen Betrag
+	 * @param b Betrag der subtrahiert werden soll
+	 * @return Ausgangsbetrag - übergebener Betrag
+	 */
 	double subtrahiere(Betrag b){
 		return this.betrag - b.betrag;
 	}
-	
+	/**
+	 * Multipliziert einen Betrag mit einer übergebenen double Zahl
+	 * @param zahl Zahl mit der der gegebene Betrag multipliziert werden soll
+	 * @return Ausgangsbetrag * übergebener Betrag
+	 */
 	double multipliziere(double zahl){
 		double ergebnis = this.betrag * zahl;
 		return ergebnis;
 	}
-	
+	/**
+	 * Multipliziert einen Betrag mit einer übergebenen int Zahl
+	 * @param zahl Zahl mit der der gegebene Betrag multipliziert werden soll
+	 * @return Ausgangsbetrag * übergebener Betrag
+	 */
 	double multipliziere(int zahl){
-		double ergebnis = this.betrag / zahl;
+		double ergebnis = this.betrag * zahl;
 		return ergebnis;
 	}
 	
