@@ -10,12 +10,14 @@ public class Hauptprogramm {
 		Betrag b2 = new Betrag(150, Waehrungen.euro);
 		konto.buche(b);
 		//konto.buche(konto, b2);
-		konto.arrayAusgabe();
 		//System.out.println(waehrungen.euro.toString());
 		//System.out.println(waehrungen.dollar.umrechnen(1, waehrungen.euro));
 		//Betrag betrag1 = new Betrag(100.12,waehrungen.euro);
 		//Betrag betrag2 = new Betrag(100,waehrungen.euro);
 		//System.out.println(betrag1.getAsDouble());
+		konto.buche(b);
+		konto.buche(b2);
+		System.out.println(konto.toString());
 		
 	}
 

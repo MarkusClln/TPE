@@ -1,43 +1,50 @@
 package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 //import TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01.Betrag;
 
-public class Konto extends Betrag {
+public class Konto{
 	private String inhaber;
 	private Waehrung waehrung;
 	private long guthaben;
 	
-	long[] konto1 = new long[10];
+	private Betrag[] konto = new Betrag[100];
+	private int pointer =0;
 	
 	 Konto(String inhaber,Waehrung waehrung, long guthaben){
-		super(guthaben, waehrung);
-		this.inhaber = inhaber;
+		this.inhaber=inhaber;
+		this.waehrung=waehrung;
+		this.guthaben=guthaben;
+		 
+		/* super(guthaben, waehrung);
+		this.inhaber = inhaber;*/
 	}
 	
 	void buche( Betrag betrag){
 		
+		konto[pointer]= betrag;
 		if(this.waehrung==betrag.getWaehrung()){
-			konto1[0] = betrag.getBetrag();
+			guthaben+=betrag.getBetrag();
 			
 		}else{
-			long erg = Waehrung.dollar.umrechnen(betrag.getBetrag(), this.waehrung);
-			konto1[0] = erg;
-		
+			long ergebnis= (long)(betrag.getWaehrung().getKurs()*betrag.getBetrag())*100;
+			ergebnis *=this.waehrung.getKurs();
+			guthaben+=ergebnis;
 			
 		}
+		this.pointer++;
 	}
 	
-	public void arrayAusgabe(){
-		for(int i = 0; i<konto1.length; i++){
-			System.out.println("Buchung "+ i + ": " + konto1[i]);
+	public String toString(){
+		String ausgabe ="Kontoinhaber: "+this.inhaber+"\nWährung: "+this.waehrung.getName()+"\n-------------------------\n";
+		for(int i = 0; konto[i]!=null; i++){
+			ausgabe+=((double)konto[i].getBetrag())/100+" "+konto[i].getWaehrung().getKuerzel()+"\n";
 		}
+		ausgabe+="-------------------------\n"+((double)this.guthaben)/100+" "+this.waehrung.getKuerzel();
+		return ausgabe;
 	}
+	
 	
 	public double saldo(){
-		int erg = 0;
-		for(int i = 0; i<konto1.length; i++){
-			erg += konto1[i];
-		}
-		return erg;
+		return guthaben;
 	}
 	
 	public void gebuehren(){
