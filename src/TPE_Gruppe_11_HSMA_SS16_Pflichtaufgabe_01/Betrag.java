@@ -7,7 +7,7 @@ package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
 
 public class Betrag{
 	
-	private final long betrag;
+	protected long betrag;
 	private final Waehrung waehrung;
 	/**
 	 * Erstellt ein neues Objekt vom Typ Betrag

@@ -5,7 +5,7 @@ public class Hauptprogramm {
 	public static void main(String[] args) {
 		
 		Waehrungen waehrungen = new Waehrungen();
-		Konto konto = new Konto("hans", Waehrungen.euro, 10);
+		Konto konto = new Konto("hans", Waehrungen.euro, 0);
 		Betrag b = new Betrag(100, Waehrungen.euro);
 		Betrag b2 = new Betrag(150, Waehrungen.euro);
 		konto.buche(b);
@@ -18,6 +18,8 @@ public class Hauptprogramm {
 		konto.buche(b);
 		konto.buche(b2);
 		System.out.println(konto.toString());
+		
+		
 		
 	}
 
