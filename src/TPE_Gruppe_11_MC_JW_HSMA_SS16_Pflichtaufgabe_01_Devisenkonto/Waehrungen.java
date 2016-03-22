@@ -1,4 +1,4 @@
-package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
+package TPE_Gruppe_11_MC_JW_HSMA_SS16_Pflichtaufgabe_01_Devisenkonto;
 
 /**
  * @author Jens Windisch (1526760)

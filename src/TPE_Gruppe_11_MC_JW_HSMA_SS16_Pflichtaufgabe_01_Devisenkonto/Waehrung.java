@@ -1,10 +1,22 @@
-package TPE_Gruppe_11_HSMA_SS16_Pflichtaufgabe_01;
+package TPE_Gruppe_11_MC_JW_HSMA_SS16_Pflichtaufgabe_01_Devisenkonto;
+
+/**
+ * @author Jens Windisch (1526760)
+ * @author Markus Cöllen (1527307)
+ * @since 
+ */
 
 class Waehrung extends Waehrungen {
 	private final String name;
 	private final String kuerzel;
 	private final double kurs;
 	
+	/**
+	 * Erstellt ein Objekt der Klasse Waehrung mit folgenden Parametern
+	 * @param name Name der Währung
+	 * @param kuerzel Kürzel der Währung
+	 * @param kurs Kurs der Währung zum Dollar
+	 */
 	public Waehrung(String name, String kuerzel, double kurs) {
 		this.name = name;
 		this.kuerzel = kuerzel;
@@ -24,10 +36,17 @@ class Waehrung extends Waehrungen {
 	public String getName() {
 		return name;
 	}
-
+	
+	/**
+	 * umrechnen()
+	 * Rechnet einen übergebenen Betrag in die übergebene Zielwährung um
+	 * @param betrag
+	 * @param zielwaehrung
+	 * @return gibt den Wert des umgerechneten Betrags zurück
+	 */
 	
 	public static long umrechnen(long betrag, Waehrung zielwaehrung) {
-		double umgerechneterBetrag = (double) betrag * dollar.kurs;
+		double umgerechneterBetrag = (long) betrag * dollar.kurs;
 		umgerechneterBetrag = umgerechneterBetrag/zielwaehrung.kurs;
 		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
 		umgerechneterBetrag *= 100;
