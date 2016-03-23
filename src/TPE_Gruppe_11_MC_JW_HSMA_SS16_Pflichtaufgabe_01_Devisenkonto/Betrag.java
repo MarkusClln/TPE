@@ -70,14 +70,14 @@ public class Betrag{
 		return ergebnis;
 	}
 	
-	double prozent(double prozentsatz){
-		double prozentwert = this.betrag * prozentsatz;
-		return prozentwert;
+	long prozent(double prozentsatz){
+		double prozentwert = (this.betrag/100) * prozentsatz;
+		return (long)(prozentwert*100);
 	}
 	
-	double promille(double promillesatz){
-		double promillewert = (this.betrag * promillesatz)/1000;
-		return promillewert;
+	long promille(double promillesatz){
+		double promillewert = ((this.betrag/100) * promillesatz);
+		return (long)(promillewert*100);
 	}
 	
 	int getVorkomma(){
@@ -121,5 +121,6 @@ public class Betrag{
 	public Waehrung getWaehrung(){
 		return this.waehrung;
 	}
+	
 	
 }

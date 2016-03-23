@@ -6,19 +6,14 @@ public class Hauptprogramm {
 		
 		Waehrungen waehrungen = new Waehrungen();
 		Konto konto = new Konto("hans", Waehrungen.euro, 0);
-		Betrag b = new Betrag(100, Waehrungen.yen);
-		Betrag b2 = new Betrag(150, Waehrungen.yen);
+		Betrag b = new Betrag(100, Waehrungen.euro);
+		//Betrag b1 = new Betrag(150, Waehrungen.yen);
 		konto.buche(b);
-		//konto.buche(konto, b2);
-		//System.out.println(waehrungen.euro.toString());
-		//System.out.println(waehrungen.dollar.umrechnen(1, waehrungen.euro));
-		//Betrag betrag1 = new Betrag(100.12,waehrungen.euro);
-		//Betrag betrag2 = new Betrag(100,waehrungen.euro);
-		//System.out.println(betrag1.getAsDouble());
-		konto.buche(b);
-		konto.buche(b2);
+		//konto.buche(b1);
+		konto.gebuehren(0.00372);
 		System.out.println(konto.toString());
-		
+		//System.out.println(Waehrung.euro.umrechnen(10000, Waehrung.yen));
+		//System.out.println(b.runden(100.89732));
 		
 		
 	}

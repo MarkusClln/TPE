@@ -45,12 +45,11 @@ class Waehrung extends Waehrungen {
 	 * @return gibt den Wert des umgerechneten Betrags zurück
 	 */
 	
-	public static long umrechnen(long betrag, Waehrung zielwaehrung) {
-		double umgerechneterBetrag = (long) betrag * dollar.kurs;
-		umgerechneterBetrag = umgerechneterBetrag/zielwaehrung.kurs;
-		umgerechneterBetrag = Math.round(umgerechneterBetrag * 100) / 100.0;
-		umgerechneterBetrag *= 100;
-		return (long) umgerechneterBetrag;
+	public long umrechnen(long betrag, Waehrung zielwaehrung) {
+		double umgerechneterBetrag =  betrag;
+		umgerechneterBetrag*= this.kurs;
+		umgerechneterBetrag /=zielwaehrung.kurs;
+		return (long) Math.round(umgerechneterBetrag*100)/100;
 	}
 
 	public String toString() {
