@@ -22,8 +22,6 @@ class Waehrung extends Waehrungen {
 		this.kuerzel = kuerzel;
 		this.kurs = kurs;
 	}
-	
-
 
 	public String getKuerzel() {
 		return kuerzel;
@@ -46,10 +44,10 @@ class Waehrung extends Waehrungen {
 	 */
 	
 	public long umrechnen(long betrag, Waehrung zielwaehrung) {
-		double umgerechneterBetrag =  betrag;
-		umgerechneterBetrag*= this.kurs;
-		umgerechneterBetrag /=zielwaehrung.kurs;
-		return (long) Math.round(umgerechneterBetrag*100)/100;
+		double umgerechneterBetrag = betrag;
+		umgerechneterBetrag *= this.kurs;
+		umgerechneterBetrag /= zielwaehrung.kurs;
+		return (long) Math.round(umgerechneterBetrag * 100) / 100;
 	}
 
 	public String toString() {

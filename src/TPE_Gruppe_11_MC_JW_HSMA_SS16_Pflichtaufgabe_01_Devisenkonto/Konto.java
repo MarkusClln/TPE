@@ -18,9 +18,10 @@ public class Konto extends Betrag {
 	 * @param guthaben gibt das aktuelle Guthaben des Kontos an
 	 */
 	 
-	Konto(String inhaber, Waehrung waehrung, double guthaben) {
-		super(guthaben, waehrung);
+	Konto(String inhaber, Waehrung waehrung) {
+		super(0, waehrung);
 		this.inhaber = inhaber;
+		
 	}
 	 
 	/**
@@ -57,12 +58,17 @@ public class Konto extends Betrag {
 	 */
 	
 	public String toString() {
-		String ausgabe = "Kontoinhaber: " + this.inhaber + "\nWährung: " + super.getWaehrung().getName()
+		String ausgabe = "Kontoinhaber: " 
+				+ this.inhaber + "\nWährung: " 
+				+ super.getWaehrung().getName()
 				+ "\n-------------------------\n";
 		for (int i = 0; konto[i] != null; i++) {
-			ausgabe += ((double) konto[i].getBetrag()) / 100 + " " + konto[i].getWaehrung().getKuerzel() + "\n";
+			ausgabe += ((double) konto[i].getBetrag()) / 100 
+					+ " " + konto[i].getWaehrung().getKuerzel() 
+					+ "\n";
 		}
-		ausgabe += "-------------------------\n" + "Saldo: " + ((double) saldo()) / 100 + " "
+		ausgabe += "-------------------------\n" 
+				+ "Saldo: " + ((double) saldo()) / 100 + " "
 				+ super.getWaehrung().getKuerzel();
 		return ausgabe;
 	}
@@ -102,5 +108,9 @@ public class Konto extends Betrag {
 
 	public long getGuthaben() {
 		return super.betrag;
+	}
+	
+	public Betrag getKonto(int zahl) {
+		return konto[zahl];
 	}
 }

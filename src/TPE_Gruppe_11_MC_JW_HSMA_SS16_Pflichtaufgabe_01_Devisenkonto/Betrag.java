@@ -14,12 +14,12 @@ public class Betrag{
 	 * @param betrag gibt den Betrag des Objekts an
 	 * @param waehrung gibt die Währung des Objekts an
 	 */
-	Betrag(double betrag, Waehrung waehrung){
+	Betrag(double betrag, Waehrung waehrung) {
 
-		this.betrag = (long) (betrag*100);
+		this.betrag = (long) (betrag * 100);
 		this.waehrung = waehrung;
 	}
-	
+
 	public long getBetrag() {
 		return betrag;
 	}
@@ -40,7 +40,7 @@ public class Betrag{
 	 * @param b Betrag der dazu addiert werden soll
 	 * @return Ausgangsbetrag + übergebener Betrag
 	 */
-	public long addiere(Betrag b){
+	public long addiere(Betrag b) {
 		return (this.betrag + b.betrag);
 	}
 	/**
@@ -48,7 +48,7 @@ public class Betrag{
 	 * @param b Betrag der subtrahiert werden soll
 	 * @return Ausgangsbetrag - übergebener Betrag
 	 */
-	double subtrahiere(Betrag b){
+	double subtrahiere(Betrag b) {
 		return this.betrag - b.betrag;
 	}
 	/**
@@ -56,7 +56,7 @@ public class Betrag{
 	 * @param zahl Zahl mit der der gegebene Betrag multipliziert werden soll
 	 * @return Ausgangsbetrag * übergebener Betrag
 	 */
-	double multipliziere(double zahl){
+	double multipliziere(double zahl) {
 		double ergebnis = this.betrag * zahl;
 		return ergebnis;
 	}
@@ -65,38 +65,39 @@ public class Betrag{
 	 * @param zahl Zahl mit der der gegebene Betrag multipliziert werden soll
 	 * @return Ausgangsbetrag * übergebener Betrag
 	 */
-	double multipliziere(int zahl){
+	double multipliziere(int zahl) {
 		double ergebnis = this.betrag * zahl;
 		return ergebnis;
 	}
-	
-	long prozent(double prozentsatz){
-		double prozentwert = (this.betrag/100) * prozentsatz;
-		return (long)(prozentwert*100);
+
+	long prozent(double prozentsatz) {
+		double prozentwert = (this.betrag / 100) * prozentsatz;
+		return (long) (prozentwert * 100);
 	}
-	
-	long promille(double promillesatz){
-		double promillewert = ((this.betrag/100) * promillesatz);
-		return (long)(promillewert*100);
+
+	long promille(double promillesatz) {
+		double promillewert = ((this.betrag / 100) * promillesatz);
+		return (long) (promillewert * 100);
 	}
-	
-	int getVorkomma(){
-		double vorKomma= this.betrag/100;//int gibt nur alles vorm Komma aus
+
+	int getVorkomma() {
+		double vorKomma = this.betrag / 100;// int gibt nur alles vorm Komma aus
 		return (int) vorKomma;
 	}
-	
-	int getNachkomma(){
-		return (int) this.betrag%100; //der rest von betrag modulo 1 ist alles nach dem Komma	
+
+	int getNachkomma() {
+		return (int) this.betrag % 100; // der rest von betrag modulo 1 ist
+										// alles nach dem Komma
 	}
-	
-	public String toString(){
-		return getVorzeichen()*betrag + " " + waehrung;
+
+	public String toString() {
+		return getVorzeichen() * betrag + " " + waehrung;
 	}
-	
-	double getAsDouble(){
-		
+
+	double getAsDouble() {
+
 		double doubleZahl = this.betrag;
-		return (doubleZahl/100);
+		return (doubleZahl / 100);
 	}
 
 	@Override
@@ -117,10 +118,9 @@ public class Betrag{
 			return false;
 		return true;
 	}
-	
-	public Waehrung getWaehrung(){
+
+	public Waehrung getWaehrung() {
 		return this.waehrung;
 	}
-	
-	
+
 }
