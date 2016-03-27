@@ -48,8 +48,8 @@ public class BetragTest {
 
 	@Test
 	public void testPromille() { 
-		Betrag b = new Betrag(10, Waehrung.euro);
-		assertTrue(b.promille(0.2) == 0.2);
+		Betrag b = new Betrag(100, Waehrung.euro);
+		assertTrue(b.promille(0.003) == 30);
 	}
 
 	@Test

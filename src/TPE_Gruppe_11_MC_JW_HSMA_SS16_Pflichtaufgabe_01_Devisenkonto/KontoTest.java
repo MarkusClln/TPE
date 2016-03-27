@@ -8,7 +8,8 @@ public class KontoTest {
 
 	Konto konto = new Konto("Olaf Günther", Waehrungen.euro);
 	Betrag b = new Betrag(100, Waehrungen.euro);
-	
+	Betrag b2 = new Betrag(120, Waehrungen.euro);
+	Betrag b3 = new Betrag(1000, Waehrungen.yen);
 	@Test
 	public void testBuche() {
 		konto.buche(b);
@@ -20,6 +21,16 @@ public class KontoTest {
 		konto.buche(b);
 		konto.gebuehren(0.003);
 		assertTrue(konto.saldo()==9970);
+	}
+	
+	@Test
+	public void testToString() {
+		konto.buche(b);
+		konto.buche(b2);
+		konto.buche(b3);
+		String test = konto.toString();
+		assertTrue(test.contains("Kontoinhaber: " + konto.getInhaber() + "\nWährung: " + konto.getWaehrung().getName() + "\n-------------------------\n"));
+		
 	}
 
 }

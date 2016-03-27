@@ -63,12 +63,12 @@ public class Konto extends Betrag {
 				+ super.getWaehrung().getName()
 				+ "\n-------------------------\n";
 		for (int i = 0; konto[i] != null; i++) {
-			ausgabe += ((double) konto[i].getBetrag()) / 100 
+			ausgabe += konto[i].getAsDouble()
 					+ " " + konto[i].getWaehrung().getKuerzel() 
 					+ "\n";
 		}
 		ausgabe += "-------------------------\n" 
-				+ "Saldo: " + ((double) saldo()) / 100 + " "
+				+ "Saldo: " + getAsDouble() + " "
 				+ super.getWaehrung().getKuerzel();
 		return ausgabe;
 	}

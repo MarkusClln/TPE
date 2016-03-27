@@ -11,8 +11,10 @@ public class Hauptprogramm {
 		konto.buche(b);
 		//konto.buche(b1);
 		konto.gebuehren(0.003);
-		System.out.println(konto.saldo());
+		System.out.println(konto.toString());
 		System.out.println(Waehrung.euro.umrechnen(10000, Waehrung.yen));
+		System.out.println(b.promille(0.003));
+		
 		
 		
 	}

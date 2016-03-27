@@ -69,31 +69,48 @@ public class Betrag{
 		double ergebnis = this.betrag * zahl;
 		return ergebnis;
 	}
-
+	/**
+	 * Berechnet einen Prozentwert eines Wertes nach übergebenem Prozentsatz
+	 * @param prozentsatz
+	 * @return Betrag * prozentsatz
+	 */
 	long prozent(double prozentsatz) {
 		double prozentwert = (this.betrag / 100) * prozentsatz;
 		return (long) (prozentwert * 100);
 	}
-
+	/**
+	 * Berechnet einen Promillewert eines Wertes nach übergebenem Promillesatz
+	 * @param promillesatz
+	 * @return Betrag * promillesatz
+	 */
 	long promille(double promillesatz) {
 		double promillewert = ((this.betrag / 100) * promillesatz);
 		return (long) (promillewert * 100);
 	}
-
+	/**
+	 * Teilt den Betrag durch 100 und gibt ihn als Integer zurück
+	 * @return
+	 */
 	int getVorkomma() {
-		double vorKomma = this.betrag / 100;// int gibt nur alles vorm Komma aus
+		double vorKomma = this.betrag / 100;
 		return (int) vorKomma;
 	}
-
+	/**
+	 * Berechnet den Modolo 100 des Betrags und gibt dieses als Integer zurück
+	 * @return
+	 */
 	int getNachkomma() {
-		return (int) this.betrag % 100; // der rest von betrag modulo 1 ist
-										// alles nach dem Komma
+		return (int) this.betrag % 100; 
+										
 	}
 
 	public String toString() {
 		return getVorzeichen() * betrag + " " + waehrung;
 	}
-
+	/**
+	 * Gibt den Betrag als double zurück
+	 * @return
+	 */
 	double getAsDouble() {
 
 		double doubleZahl = this.betrag;

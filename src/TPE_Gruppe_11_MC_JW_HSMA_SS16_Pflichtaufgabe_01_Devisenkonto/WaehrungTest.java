@@ -8,8 +8,8 @@ public class WaehrungTest {
 
 	@Test
 	public void testUmrechnen() {
-		double erg = Waehrungen.dollar.umrechnen(1, Waehrungen.euro);
-		assertTrue(erg == 79);
+		double erg = Waehrung.euro.umrechnen(10000, Waehrung.yen);
+		assertTrue(erg == 1394505);
 	}
 
 }
