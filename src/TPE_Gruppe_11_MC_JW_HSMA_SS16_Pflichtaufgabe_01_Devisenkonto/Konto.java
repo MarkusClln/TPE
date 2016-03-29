@@ -58,9 +58,8 @@ public class Konto extends Betrag {
 	 */
 	
 	public String toString() {
-		String ausgabe = "Kontoinhaber: " 
-				+ this.inhaber + "\nWährung: " 
-				+ super.getWaehrung().getName()
+		String ausgabe = "Kontoinhaber: " + this.inhaber 
+				+ "\nWährung: " + super.getWaehrung().getName()
 				+ "\n-------------------------\n";
 		for (int i = 0; konto[i] != null; i++) {
 			ausgabe += konto[i].getAsDouble()

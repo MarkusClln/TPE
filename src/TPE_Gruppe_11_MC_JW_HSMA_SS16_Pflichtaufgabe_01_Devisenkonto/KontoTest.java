@@ -7,6 +7,7 @@ import org.junit.Test;
 public class KontoTest {
 
 	Konto konto = new Konto("Olaf Günther", Waehrungen.euro);
+	//private Betrag[] konto1 = new Betrag[100];
 	Betrag b = new Betrag(100, Waehrungen.euro);
 	Betrag b2 = new Betrag(120, Waehrungen.euro);
 	Betrag b3 = new Betrag(1000, Waehrungen.yen);
@@ -30,6 +31,30 @@ public class KontoTest {
 		konto.buche(b3);
 		String test = konto.toString();
 		assertTrue(test.contains("Kontoinhaber: " + konto.getInhaber() + "\nWährung: " + konto.getWaehrung().getName() + "\n-------------------------\n"));
+		
+	}
+	
+	@Test
+	public void testToString1() {
+		
+		konto.buche(b);
+		konto.buche(b2);
+		
+		String testString = "Kontoinhaber: " 
+				+ konto.getInhaber() + "\nWährung: " 
+				+ konto.getWaehrung().getName()
+				+ "\n-------------------------\n";
+		for (int i = 0; konto.getKonto(i) != null; i++) {
+			testString += konto.getKonto(i).getAsDouble()
+					+ " " + konto.getKonto(i).getWaehrung().getKuerzel() 
+					+ "\n";
+		}
+		testString += "-------------------------\n" 
+				+ "Saldo: " + konto.getAsDouble() + " "
+				+ konto.getWaehrung().getKuerzel();
+		
+		assertEquals(konto.toString(), testString);
+
 		
 	}
 
