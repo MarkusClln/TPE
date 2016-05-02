@@ -1,9 +1,7 @@
 package JUnitTests;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import MemberPack.Member;
 import Verein.MembershipList;
 
@@ -195,19 +193,19 @@ public class ClubTest {
 	  verein.remove("2");
 	  assertTrue(verein.containsKey(2));
 	 }
-
-	 /*@Test
-	    public void throwsExceptionWhenNegativeNumbersAreGiven() {
-	        try {
-	            verein.put(eins);
-	            verein.put(fuenf);
-	            fail("kaka");
-	        } catch (ID_Exception e) {
-	            assertThat(e)
-	                    .isInstanceOf(IllegalArgumentException.class)
-	                    .hasMessage("negatives not allowed: [-1, -2]");
-	        }
-	    }*/
+	 /**
+	  * Test für doppeltes einlesen
+	  */
+	 @Test
+	 public void testRandfall_3() {
+		 verein.put(eins);
+		 verein.remove(2);
+		 verein.put(eins);
+		 verein.put(eins);
+		 verein.remove(2); 
+		 assertFalse(verein.containsKey(2));
+	 }
+	
 	
 }
 	/*
