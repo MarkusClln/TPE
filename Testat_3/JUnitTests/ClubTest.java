@@ -176,6 +176,38 @@ public class ClubTest {
 		verein2.putAll(verein);
 		assertTrue(verein2.equals(verein));
 	}
+	 /**
+	  * Test für falschen Key-Datentyp 
+	  */
+	 @Test
+	 public void testRandfall_1() {
+	  verein.put(eins);
+	  verein.put(zwei);
+	  assertFalse(verein.containsKey("2"));
+	 }
+	 /**
+	  * Test für Keyentfernung mit falschem Datentyp
+	  */
+	 @Test
+	 public void testRandfall_2() {
+	  verein.put(eins);
+	  verein.put(zwei);
+	  verein.remove("2");
+	  assertTrue(verein.containsKey(2));
+	 }
+
+	 /*@Test
+	    public void throwsExceptionWhenNegativeNumbersAreGiven() {
+	        try {
+	            verein.put(eins);
+	            verein.put(fuenf);
+	            fail("kaka");
+	        } catch (ID_Exception e) {
+	            assertThat(e)
+	                    .isInstanceOf(IllegalArgumentException.class)
+	                    .hasMessage("negatives not allowed: [-1, -2]");
+	        }
+	    }*/
 	
 }
 	/*
