@@ -13,7 +13,7 @@ public class ClubManagement extends MembershipList {
 		verein.put(zwei);
 		verein.put(drei);
 		verein.put(vier);
-
+		System.out.println(verein.toString());
 		System.out.println("Liste 1 Länge: " + verein.size());
 		verein.forEach((a, b) -> System.out.println(b));
 

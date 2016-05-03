@@ -156,7 +156,10 @@ public class ClubTest {
 		verein.remove(2);
 		assertFalse(verein.containsKey(2));
 	}
-	
+	/**
+	 * Ein Member mit der ID2 wird hinzugefügt und anschließend wieder gelöscht, 
+	 * danach wird ein neues Mitglied mit der ID 2 hinzugefügt
+	 */
 	@Test
 	public void testRemoveRandfall() {
 		verein.put(eins);
