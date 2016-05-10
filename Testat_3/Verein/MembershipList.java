@@ -7,16 +7,10 @@ import MemberPack.Member;
 
 public class MembershipList<K, V> extends HashMap<K, V> implements Map<K, V> {
 	/**
-	 * Eigene Put Methode die nur einen Member als Parameter übernimmt
-	 * @param member
-	 * @return falls Member_ID schon vorhanden ist null
-	 * 			andernfalls wird die put(K,V) methode aufgerufen, wobei K die ID des übergebenen Members darstellt.
+	 * Eigene put Methode die als Parameter nur einen Member hat.
+	 * Ruft ueberschriebene Put-Methode auf.
 	 */
 	public V put(Member member) {
-		if (this.containsKey(member.getMitglieder_ID())) {
-			System.out.println("ID SCHON VORHANDEN!");
-			return null;
-		}else
 		return put((K) new Integer(member.getMitglieder_ID()), (V) member);
 	}
 	/**
@@ -25,5 +19,16 @@ public class MembershipList<K, V> extends HashMap<K, V> implements Map<K, V> {
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+	/**
+	 * Put(K,V) ueberschrieben, damit geprüft wird ob Key schon vorhanden ist.
+	 */
+	@Override
+	public V put(K Key, V Value){
+		if(this.containsKey(Key)){
+			return  null;
+		}else{
+			return super.put(Key, Value);
+		}
 	}
 }
