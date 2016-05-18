@@ -76,7 +76,7 @@ public class Zug implements Runnable {
 				}else{
 				interrupt();
 				try {
-					throw new Simulation_Exception("\nCRASH "+ Thread.currentThread().getName());
+					throw new Simulation_Exception("\nCRASH "+ Thread.currentThread().getName() + this.position);
 				} catch (Simulation_Exception e) {
 					e.printStackTrace();
 				}
@@ -95,6 +95,7 @@ public class Zug implements Runnable {
 			}
 
 		}
+		System.out.println("Zug an Position: " + this.position);
 	}
 
 	public boolean freeWay() {
@@ -113,11 +114,14 @@ public class Zug implements Runnable {
 	}
 
 	public boolean crash() {
-		if (strecke.strecke[this.position - 1] != '-' && strecke.strecke[this.position - 1] != '_'
+		if(!locked()){	
+			if (strecke.strecke[this.position - 1] != '-' && strecke.strecke[this.position - 1] != '_'
 				&& strecke.strecke[this.position - 1] != '|') {
 			return true;
-		} else
+			} else
 			return false;
+			}
+		else return false;
 	}
 
 	public void move() {
