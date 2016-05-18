@@ -1,4 +1,6 @@
-package SimulationPack;
+package StreckePack;
+
+import BlockPack.Block;
 
 public class Strecke {
 
@@ -18,8 +20,8 @@ public class Strecke {
 	}
 
 	public synchronized void  print() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		
+		//System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		System.out.println("\n");
 		for (int i = 0; i < bloecke.length; i++) {
 			if (bloecke[i].isLocked()) {
 				System.out.print('|');
@@ -102,5 +104,8 @@ public class Strecke {
 		
 	}
 
+	public synchronized void wakeUp(){
+		notifyAll();
+	}
 }
 

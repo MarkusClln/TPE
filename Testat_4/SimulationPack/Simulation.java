@@ -1,9 +1,10 @@
 package SimulationPack;
 
+import BlockPack.Block;
+import StreckePack.Strecke;
+import ZugPack.Zug;
 
-
-
-public class Stimmulato {
+public class Simulation {
 
 	public static void main(String[] args) {
 		Strecke strecke = new Strecke(70,8);
@@ -16,6 +17,9 @@ public class Stimmulato {
 		Block block7 = new Block(5);
 		Block block8 = new Block(5);
 		
+	
+	//	Block blockTEST = new Block(70);
+		
 		strecke.addBlock(block1);
 		strecke.addBlock(block2);
 		strecke.addBlock(block3);
@@ -23,13 +27,15 @@ public class Stimmulato {
 		strecke.addBlock(block5);
 		strecke.addBlock(block6);
 		strecke.addBlock(block7);
-		strecke.addBlock(block8);
+		strecke.addBlock(block8); 
 		
-	Zug zugA = new Zug('A',6,5,strecke);
-	Zug zugB = new Zug('B',11,15,strecke);
-	Zug zugC = new Zug('C',20,5,strecke);
-	Zug zugD = new Zug('D',30,10,strecke);
-	Zug zugE = new Zug('E',45,6,strecke);
+	//	strecke.addBlock(blockTEST);
+		
+	Zug zugA = new Zug('A',6,20,strecke);
+	Zug zugB = new Zug('B',10,20,strecke);
+	Zug zugC = new Zug('C',20,30,strecke);
+	Zug zugD = new Zug('D',30,30,strecke);
+	Zug zugE = new Zug('E',60,3,strecke);
 			
 		Thread Zug1 = new Thread(zugA);
 		Thread Zug2 = new Thread(zugB);
@@ -37,9 +43,9 @@ public class Stimmulato {
 		Thread Zug4 = new Thread(zugD);
 		Thread Zug5 = new Thread(zugE);
 		
-		Zug3.start();
 		Zug1.start();
 		Zug2.start();
+		Zug3.start();
 		Zug4.start();
 		Zug5.start();
 		
