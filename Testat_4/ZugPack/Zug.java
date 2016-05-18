@@ -11,7 +11,6 @@ public class Zug implements Runnable {
 	private int speed;
 	private Strecke strecke;
 	private boolean interrupted = false;
-	private Block nextblock;
 
 	public Zug(char name, int position, int speed, Strecke strecke) {
 		this.name = name;
@@ -51,14 +50,18 @@ public class Zug implements Runnable {
 			
 			} else if (position == strecke.currentBlock(position).getEnde()) {
 				if (locked()) {
-					
-						synchronized (strecke) {
-						while(strecke.currentBlock(position+1).isLocked()){
+
+					synchronized (strecke.currentBlock(position+1)) {
+						{
 							try {
-							this.wait();
-						} catch (InterruptedException e) {
-							break;
-						}
+								{
+									System.out.println("\n" + this.name+" wartet");
+									strecke.currentBlock(position+1).wait();
+									System.out.println("\n" + this.name + " fährt weiter");
+								}
+							} catch (InterruptedException e) {
+								break;
+							}
 						}
 					}
 				} else if(!locked()) {

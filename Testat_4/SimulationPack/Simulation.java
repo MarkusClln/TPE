@@ -31,11 +31,11 @@ public class Simulation {
 		
 	//	strecke.addBlock(blockTEST);
 		
-	Zug zugA = new Zug('A',6,20,strecke);
-	Zug zugB = new Zug('B',10,20,strecke);
-	Zug zugC = new Zug('C',20,30,strecke);
-	Zug zugD = new Zug('D',30,30,strecke);
-	Zug zugE = new Zug('E',60,3,strecke);
+	Zug zugA = new Zug('A',6,5,strecke);
+	Zug zugB = new Zug('B',10,5,strecke);
+	Zug zugC = new Zug('C',20,5,strecke);
+	Zug zugD = new Zug('D',30,5,strecke);
+	Zug zugE = new Zug('E',60,15,strecke);
 			
 		Thread Zug1 = new Thread(zugA);
 		Thread Zug2 = new Thread(zugB);
