@@ -1,133 +1,117 @@
 package SimulationPack;
 
-public class Zug implements Runnable{
+public class Zug implements Runnable {
 
-	private int km_h;
 	private char name;
 	private int position;
-	Strecke strecke;
+	private int speed;
+	private Strecke strecke;
+	private boolean interrupted=false;
+
 	
-	public Zug(int km_h,char name,int position, Strecke strecke){
-		this.km_h=km_h;
-		this.name=name;
-		this.position=position;
-		this.strecke = strecke;
+	public Zug(char name, int position, int speed, Strecke strecke){
+		this.name = name;
+		this.position= position;
+		this.speed=speed;
+		this.strecke=strecke;
+		strecke.strecke[position]=name;
+		strecke.sperren(position);
 		
+	
+	
 	}
 	
-	@Override
-	public synchronized void run() {
-		while(position<strecke.getKm()-1){	
-			
-			
+	
+	
+	
+	public void interrupt() {
+		interrupted = true;
+	}
+
+	public void run() {
+
+		while (!interrupted) {
+
 			try {
-				Thread.sleep(1000/km_h);
-				} catch (InterruptedException e) {
-				break;
+				Thread.sleep(1000 / speed);
+			} catch (InterruptedException e) {
+				// EinHauchVonNichts
+			}
+			if (position == strecke.getLaenge() - 1) {
+				strecke.strecke[position] = '-';
+				strecke.entsperren(position);
+				interrupted = true;
+				strecke.print();
+			} else
+
+			if (crash()) {
+				interrupt();
+			} else if (position == strecke.currentBlock(position).getEnde()) {
+				if (locked()) {
+					waitBlock();
+
+				} else {
+					strecke.sperren(position + 1);
+					strecke.entsperren(position);
+					wakeUpBlock();
+					move();
+
 				}
-			
-			if(strecke.strecke[position-1]!='-'&&strecke.strecke[position-1]!='|'&&strecke.strecke[position-1]!='_'){
-				try {
-					while (true) {
-					synchronized(this) {		    
-						       this.wait();		      
-					}   
-						} 
-					} catch (InterruptedException e) {				
-			}
-			}
-			
-			
-			
-			
-			if(strecke.strecke[position+1]=='-'){
+
+			} else if (freeWay()) {
 				move();
-			}else if(strecke.strecke[position+1]=='|'){
-				
-			
-			/*	
-				try {
-					while (true) {
-					synchronized(this) {		    
-						       this.wait();		      
-					}   
-						} 
-					} catch (InterruptedException e) {				
 			}
-			*/
-			
-			}else if(strecke.strecke[position+1]=='_'){
-				
-				strecke.leave(strecke.ZugGetBlock(position));
-				strecke.ZugGetBlock(position+1).enter();	
-				move();
-			}else{
-			
-				
-				try {
-					while (true) {
-					synchronized(this) {		    
-						       this.wait();		      
-					}   
-						} 
-					} catch (InterruptedException e) {				
-			}
-				
-				
-			}
-			
-			
-			
-				
-			
-			
-			
-			
-			
-			
-			
-			
-		
+
+		}
 	}
-		strecke.strecke[position]='-';
-		strecke.leave(strecke.ZugGetBlock(position));
-		strecke.sperren();
+	
+
+	public boolean freeWay(){
+		if(strecke.strecke[this.position+1]=='-'){
+			return true;
+		}else return false;
+	}
+
+	public boolean locked(){
+		if(strecke.currentBlock(this.position+1).isLocked()){
+			return true;
+		}else return false;
+
+	}
+	
+	public boolean crash(){
+		if(strecke.strecke[this.position-1]!='-'&&strecke.strecke[this.position-1]!='_'&&strecke.strecke[this.position-1]!='|'){
+			return true;
+		}else return false;
+	}
+
+	public void move(){
+		
+		strecke.strecke[this.position]='-';
+		position++;
+		strecke.strecke[this.position]=this.name;
 		strecke.print();
 	}
 
+	public synchronized void waitBlock(){
 	
-	public synchronized void move(){
-		if(position==1){
-			strecke.ZugGetBlock(position).enter();
-			strecke.sperren();
+		try {
+			while (true) {
+				synchronized (this) {
+					System.out.println(Thread.currentThread().getName());
+					this.wait();
+				}
+			}
+		} catch (InterruptedException e) {
+
 		}
-		
-		if(strecke.strecke[position+1]=='_'){
-			strecke.strecke[position+2]=name;
-			strecke.strecke[position]='-';
-			position+=2;
-			strecke.sperren();
-		}else if(strecke.strecke[position+1]=='-'){
-			strecke.strecke[position+1]=name;
-			strecke.strecke[position]='-';
-			position++;
-		}
-		
-		strecke.print();
-	}
-	
-	
-	
-	
-	
-	public char getName() {
-		return name;
 	}
 
-	public int getPosition() {
-		return position;
-	}	
+	public synchronized void wakeUpBlock(){
+		synchronized (this) {
+			this.notifyAll();
+		}
+		
+	}
 
-	
-	
 }

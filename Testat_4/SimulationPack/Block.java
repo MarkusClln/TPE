@@ -2,40 +2,44 @@ package SimulationPack;
 
 public class Block {
 
-	private int länge;
+	private int laenge;
 	private int anfang;
+	private boolean locked=false;
+	private int ende;
 	
-	public int getAnfang() {
-		return anfang;
+	public Block(int laenge) {
+		this.laenge = laenge;
+	}
+
+	public void setEnde(int ende) {
+		this.ende = ende;
+	}
+
+	public int getEnde() {
+		return ende;
 	}
 
 	public void setAnfang(int anfang) {
 		this.anfang = anfang;
 	}
 
-	private boolean color = true; // true = green false = red
-
-	
-
-	public boolean isColor() {
-		return color;
+	public boolean isLocked() {
+		return locked;
 	}
 
-	public int getLänge() {
-		return länge;
+	public int getLaenge() {
+		return laenge;
 	}
 
-	public Block(int länge) {
-		this.länge = länge;
-		
-	
+	public int getAnfang() {
+		return anfang;
 	}
 
-	public void enter() {
-		color = false;
+	public void sperren() {
+		this.locked = true;
 	}
 
-	public void leave() {
-		color = true;
+	public synchronized void entsperren() {
+		this.locked = false;
 	}
 }

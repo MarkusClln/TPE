@@ -2,88 +2,105 @@ package SimulationPack;
 
 public class Strecke {
 
-	private int km;
-	private int blöckeZähler=0;
+	private int laenge;
+	public char strecke[];
+	private Block bloecke[];
+	private int bloeckeZaehler = 0;
+	private int laengeCheck = 0;
 	
-	public char[] strecke;
+	public Strecke(int laenge, int bloecke) {
+		this.laenge = laenge;
+		strecke = new char[laenge];
+		this.bloecke = new Block[bloecke];
+		initialize();
 	
-	public int getKm() {
-		return km;
+	
 	}
 
-	
-	private Block blöcke[];
-	private int blöckeAnzahl = 0;
+	public synchronized void  print() {
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		
+		for (int i = 0; i < bloecke.length; i++) {
+			if (bloecke[i].isLocked()) {
+				System.out.print('|');
+			} else
+				System.out.print('_');
+			
+			for (int q = bloecke[i].getAnfang(); q < bloecke[i].getAnfang()
+					+ bloecke[i].getLaenge(); q++) {
+				System.out.print(strecke[q]);
+			
+			}
 
-	public Strecke(int km, int blöckeAnzahl) {
-		this.km = km;
-		this.blöcke = new Block[blöckeAnzahl];
-		this.strecke = new char[km+blöckeAnzahl];
-		for(int i = 0; i<km;i++){
+		}
+	}
+
+	public void addBlock(Block block) {
+		if (bloeckeZaehler >= bloecke.length) {
+			// Exception zu Viele Blöcke
+
+		} else if (laengeCheck+block.getLaenge()> laenge) {
+			// Exception Länge zu lang
+		} else {
+			bloecke[bloeckeZaehler] = block;
+			bloeckeZaehler++;
+			block.setAnfang(laengeCheck);
+			laengeCheck += block.getLaenge()-1;
+			block.setEnde(laengeCheck);
+			laengeCheck++;
+		
+			
+		}
+	}
+
+	public Block currentBlock(int position){
+
+	
+		for(int i = 0; i < bloecke.length; i++){
+			if(position>=bloecke[i].getAnfang()&&position<=bloecke[i].getEnde()){
+				return bloecke[i];
+			}
+		}
+		return null;
+		
+		
+
+	}
+	
+	public void sperren(int position){
+		currentBlock(position).sperren();
+	}
+
+	public void entsperren(int position){
+		
+		Block temp = currentBlock(position);
+		boolean isNotBlocked = true;
+		
+		/*for(int i= temp.getAnfang()+1; i <= temp.getAnfang()+1+temp.getLaenge();i++){
+			if(strecke[i]!='-'){
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				isNotBlocked=false;
+				break;
+			}
+		}*/
+		
+		if(isNotBlocked == true){
+			currentBlock(position).entsperren();
+		}
+
+	}
+
+	public int getLaenge() {
+		return laenge;
+	}
+
+	public void initialize(){
+		
+		for(int i=0;i<strecke.length;i++){
 			strecke[i]='-';
 		}
 		
 	}
 
-
-	public void addBlock(Block block) {
-		if (blöckeAnzahl >= blöcke.length) {
-			// Exception
-		} else {
-			blöcke[blöckeAnzahl] = block;
-			blöckeAnzahl++;
-			block.setAnfang(blöckeZähler);
-			blöckeZähler+=block.getLänge();
-		}
-	}
-
-	
-	public Block ZugGetBlock(int position){
-		int tempPosition=0;
-		for(int i=0; i<=blöcke.length-1;i++){
-			tempPosition+=blöcke[i].getLänge();
-			if(tempPosition>position){
-				return blöcke[i];
-			}
-		}
-		return null;
-	}
-	
-	public synchronized void print(){
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		
-		for(char s:strecke){
-			System.out.print(s);
-		}
-		
-	}
-
-	public synchronized void sperren(){
-		int temp=0;
-		for(int i=0; i<blöcke.length;i++){
-			
-			if(blöcke[i].isColor()){
-				strecke[temp]='_';
-				temp+=blöcke[i].getLänge();
-			}else{
-				strecke[temp]='|';
-				temp+=blöcke[i].getLänge();
-			}
-				
-		}
-	}
-
-	public void leave(Block block){
-		boolean check=true;
-		for(int i=block.getAnfang()+1;i<block.getLänge()+block.getAnfang()-1;i++){
-			if(strecke[i]!='-'){
-				check=false;
-				break;
-			}
-		}
-		if(check==true){
-			block.leave();
-		}
-	}
-
 }
+
