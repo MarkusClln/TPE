@@ -1,6 +1,6 @@
-package StreckePack;
+package SimulationPack;
 
-import BlockPack.Block;
+import GUI.Frame;
 
 public class Strecke {
 
@@ -9,40 +9,50 @@ public class Strecke {
 	private Block bloecke[];
 	private int bloeckeZaehler = 0;
 	private int laengeCheck = 0;
-	
-	public Strecke(int laenge, int bloecke) {
+	private Frame frame;
+	public Strecke(int laenge, int bloecke,Frame frame) {
 		this.laenge = laenge;
 		strecke = new char[laenge];
 		this.bloecke = new Block[bloecke];
 		initialize();
-	
+		this.frame=frame;
+		frame.GUI();
 	
 	}
 
 	public synchronized void  print() {
-		//System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		System.out.println("\n");
+		
+		String s="";
 		for (int i = 0; i < bloecke.length; i++) {
 			if (bloecke[i].isLocked()) {
-				System.out.print('|');
+				s+="|";	
 			} else
-				System.out.print('_');
+				s+="_";	
 			
 			for (int q = bloecke[i].getAnfang(); q < bloecke[i].getAnfang()
 					+ bloecke[i].getLaenge(); q++) {
-				System.out.print(strecke[q]);
+				s+=strecke[q]; 
 			
 			}
-
+			
 		}
+		frame.setText(s);
 	}
 
 	public void addBlock(Block block) {
 		if (bloeckeZaehler >= bloecke.length) {
-			// Exception zu Viele Blöcke
-
+			try{
+				throw new Simulation_Exception("Zu viele Bloecke");
+			}catch(Simulation_Exception e){
+				e.printStackTrace();
+			}
 		} else if (laengeCheck+block.getLaenge()> laenge) {
-			// Exception Länge zu lang
+		
+			try{
+				throw new Simulation_Exception("Strecke zu kurz");
+			}catch(Simulation_Exception e){
+				e.printStackTrace();
+			}
 		} else {
 			bloecke[bloeckeZaehler] = block;
 			bloeckeZaehler++;
@@ -77,15 +87,6 @@ public class Strecke {
 		
 		Block temp = currentBlock(position);
 		boolean isNotBlocked = true;
-		
-		/*for(int i= temp.getAnfang()+1; i <= temp.getAnfang()+1+temp.getLaenge();i++){
-			if(strecke[i]!='-'){
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-				isNotBlocked=false;
-				break;
-			}
-		}*/
-		
 		if(isNotBlocked == true){
 			currentBlock(position).entsperren();
 		}
@@ -104,8 +105,5 @@ public class Strecke {
 		
 	}
 
-	public synchronized void wakeUp(){
-		notifyAll();
-	}
 }
 

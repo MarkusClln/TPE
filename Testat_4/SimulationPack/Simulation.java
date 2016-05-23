@@ -1,13 +1,12 @@
 package SimulationPack;
 
-import BlockPack.Block;
-import StreckePack.Strecke;
-import ZugPack.Zug;
+import GUI.Frame;
 
 public class Simulation {
 
 	public static void main(String[] args) {
-		Strecke strecke = new Strecke(70,8);
+		Frame frame = new Frame();
+		Strecke strecke = new Strecke(70,8,frame);
 		Block block1 = new Block(10);
 		Block block2 = new Block(5);
 		Block block3 = new Block(10);
@@ -31,8 +30,9 @@ public class Simulation {
 		
 	//	strecke.addBlock(blockTEST);
 		
-	Zug zugA = new Zug('A',6,5,strecke);
-	Zug zugB = new Zug('B',10,5,strecke);
+	
+	Zug zugA = new Zug('A',1,5,strecke);
+	Zug zugB = new Zug('B',3,5,strecke);
 	Zug zugC = new Zug('C',20,5,strecke);
 	Zug zugD = new Zug('D',30,40,strecke);
 	Zug zugE = new Zug('E',60,4,strecke);

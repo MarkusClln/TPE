@@ -1,4 +1,4 @@
-package BlockPack;
+package SimulationPack;
 
 public class Block {
 
@@ -42,6 +42,7 @@ public class Block {
 	public synchronized void entsperren() {
 		synchronized(this){
 		this.locked = false;
-		this.notify();}
+		this.notify();
+		}
 	}
 }
