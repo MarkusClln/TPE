@@ -33,7 +33,7 @@ public class Simulation {
 	
 	Zug zugA = new Zug('A',1,5,strecke);
 	Zug zugB = new Zug('B',3,5,strecke);
-	Zug zugC = new Zug('C',20,5,strecke);
+	Zug zugC = new Zug('C',20,20,strecke);
 	Zug zugD = new Zug('D',30,40,strecke);
 	Zug zugE = new Zug('E',60,4,strecke);
 			
@@ -48,6 +48,18 @@ public class Simulation {
 		Zug3.start();
 		Zug4.start();
 		Zug5.start();
+		
+		try{
+			Zug1.join();
+			Zug2.join();
+			Zug3.join();
+			Zug4.join();
+			Zug5.join();
+			
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		frame.ende();
 		
 
 	}

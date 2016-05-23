@@ -87,7 +87,7 @@ public class Zug implements Runnable {
 					e.printStackTrace();
 				}
 			}
-
+			Thread.yield();
 		}
 	}
 

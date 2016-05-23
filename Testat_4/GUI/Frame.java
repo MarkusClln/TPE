@@ -10,7 +10,7 @@ public class Frame extends JFrame {
 
 	public void GUI() {
 
-		frame = new JFrame("ZugStimulato");
+		frame = new JFrame("ZugSimulator");
 		JPanel panel = new JPanel();
 
 		frame.setLayout(new FlowLayout());
@@ -39,5 +39,9 @@ public class Frame extends JFrame {
 		textArea.setForeground(c);
 	*/	frame.pack();
 		frame.setLocationRelativeTo(null);
+	}
+	public void ende(){
+		textArea.append("\nSimulation beendet");
+		frame.pack();
 	}
 }
