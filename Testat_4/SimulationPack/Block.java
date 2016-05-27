@@ -6,11 +6,31 @@ public class Block {
 	private int anfang;
 	private boolean locked=false;
 	private int ende;
-	
+	/**
+	 * Erstellt ein neues Objekt vom Typ Block
+	 * @param laenge
+	 */
 	public Block(int laenge) {
 		this.laenge = laenge;
 	}
 
+	/**
+	 * Sperrt den Block
+	 */
+	public synchronized void sperren() {
+		this.locked = true;
+	}
+	/**
+	 * Entsperrt den Block und benachrichtigt den folgenden Zug
+	 */
+	public synchronized void entsperren() {
+		synchronized(this){
+		this.locked = false;
+		this.notify();
+		}
+	}
+	
+	
 	public void setEnde(int ende) {
 		this.ende = ende;
 	}
@@ -33,16 +53,5 @@ public class Block {
 
 	public int getAnfang() {
 		return anfang;
-	}
-
-	public synchronized void sperren() {
-		this.locked = true;
-	}
-
-	public synchronized void entsperren() {
-		synchronized(this){
-		this.locked = false;
-		this.notify();
-		}
 	}
 }

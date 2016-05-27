@@ -33,15 +33,16 @@ public class Frame extends JFrame {
 
 	public void setText(String s) {
 		textArea.setText(s);
-	/*	Random r = new Random();														//Für geilö Lischt änktschn
+		Random r = new Random();														//Für geilö Lischt änktschn
 		Color c = new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256),
 				r.nextInt(256));
 		textArea.setForeground(c);
-	*/	frame.pack();
+		frame.pack();
 		frame.setLocationRelativeTo(null);
 	}
 	public void ende(){
 		textArea.append("\nSimulation beendet");
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 	}
 }

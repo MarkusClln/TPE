@@ -17,7 +17,7 @@ public class Simulation {
 		Block block8 = new Block(5);
 		
 	
-	//	Block blockTEST = new Block(70);
+
 		
 		strecke.addBlock(block1);
 		strecke.addBlock(block2);
@@ -27,15 +27,14 @@ public class Simulation {
 		strecke.addBlock(block6);
 		strecke.addBlock(block7);
 		strecke.addBlock(block8); 
-		
-	//	strecke.addBlock(blockTEST);
+
 		
 	
-	Zug zugA = new Zug('A',1,5,strecke);
-	Zug zugB = new Zug('B',3,5,strecke);
-	Zug zugC = new Zug('C',20,20,strecke);
-	Zug zugD = new Zug('D',30,40,strecke);
-	Zug zugE = new Zug('E',60,4,strecke);
+		Zug zugA = new Zug('A',6,5,strecke);
+		Zug zugB = new Zug('B',11,15,strecke);
+		Zug zugC = new Zug('C',20,5,strecke);
+		Zug zugD = new Zug('D',30,10,strecke);
+		Zug zugE = new Zug('E',45,6,strecke);
 			
 		Thread Zug1 = new Thread(zugA);
 		Thread Zug2 = new Thread(zugB);
